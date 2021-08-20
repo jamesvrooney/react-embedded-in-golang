@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-//go:embed my-react-app/build
+//go:embed build
 var embeddedFiles embed.FS
 
 func main() {
@@ -24,7 +24,7 @@ func getFileSystem() http.FileSystem {
 	// Get the build subdirectory as the
 	// root directory so that it can be passed
 	// to the http.FileServer
-	fsys, err := fs.Sub(embeddedFiles, "my-react-app/build")
+	fsys, err := fs.Sub(embeddedFiles, "build")
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func getProducts(writer http.ResponseWriter, request *http.Request) {
 
 	audi := &Car{
 		ID:   6,
-		Name: "Audi A3",
+		Name: "Audi A45",
 	}
 
 	encoder.Encode(audi)
